@@ -1,0 +1,15 @@
+name: github_storage
+description: Lightweight key-value database within your GitHub repository
+version: 1.0.0
+repository: https://github.com/allasca/github_storage
+
+environment:
+  sdk: ^3.4.0
+
+# Add regular dependencies here.
+dependencies:
+  github: ^9.24.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
