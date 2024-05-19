@@ -25,15 +25,15 @@ class GithubStorage {
   }
 
   /// Remove box from github
-  Future<void> deleteBox(String boxName) async {
+  Future<void> deleteBox({required String name, required String folder}) async {
     final box =
         await GitHub(auth: Authentication.withToken(personalAccessToken))
             .repositories
-            .getContents(RepositorySlug(username, repository), boxName);
+            .getContents(RepositorySlug(username, repository), "$folder/$name");
     await GitHub(auth: Authentication.withToken(personalAccessToken))
         .repositories
-        .deleteFile(RepositorySlug(username, repository), boxName,
-            "Delete box: $boxName", box.file!.sha!, "main");
+        .deleteFile(RepositorySlug(username, repository), "$folder/$name",
+            "Delete box: $name", box.file!.sha!, "main");
   }
 
   /// Create new empty box/file if not exist yet
